@@ -122,15 +122,12 @@ def verify_requirements():
     try:
         import bcrypt
         import redis
-        import SQLAlchemy
-        import Twisted
+        import sqlalchemy
+        import twisted
         import watchdog
-        if os.name == "nt":
-            import pypiwin32
-        else:
-            import mysql
         return True
-    except:
+    except Exception as e:
+        print(e)
         return False
 
 # Checks
