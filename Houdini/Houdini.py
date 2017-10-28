@@ -97,6 +97,8 @@ class Houdini(Factory):
             self.loadHandlerModules("Houdini.Handlers.Login.Login")
             self.logger.info("Running login server")
 
+        self.start()
+
     def loadHandlerModules(self, strictLoad=()):
         handlerMethods = []
 
