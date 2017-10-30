@@ -51,7 +51,7 @@ def handleSendAdoptPuffle(self, data):
     if self.user.Coins < 800:
         return self.sendError(401)
     
-    if not 2 < len(data.Name) < 25:
+    if not 4 < len(data.Name.replace(" ", "")) < 26:
         return self.sendError(441)
     
     self.user.Coins -= 800
