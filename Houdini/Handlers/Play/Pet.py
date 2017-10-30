@@ -54,6 +54,9 @@ def handleSendAdoptPuffle(self, data):
     if not 4 < len(data.Name.replace(" ", "")) < 26:
         return self.sendError(441)
     
+    if not data.Name.isalnum():
+        return self.sendError(441)
+    
     self.user.Coins -= 800
 
     maxHealth, maxHunger, maxRest = puffleStatistics[data.TypeId]
