@@ -7,6 +7,7 @@ from Houdini.Handlers import Handlers
 from Houdini.Data.Penguin import Penguin
 from Houdini.Handlers.Play.Item import handleBuyInventory
 from Houdini.Handlers.Play.Moderation import moderatorBan, moderatorKick
+from Houdini.Handlers.Play.Igloo import handleBuyFurniture
 
 commandCollection = {}
 
@@ -150,6 +151,12 @@ class Commands(object):
 
         if not self.server.items.isBait(arguments.ItemId):
             reactor.callFromThread(handleBuyInventory, player, arguments)
+
+    @Command("af", CommandArgument("FurnitureId", int))
+    def handleFurnitureCommand(self, player, arguments):
+                self.logger.debug("%s is trying to add an item (id: %d)" % (player.user.Username, arguments.FurnitureId))
+
+                reactor.callFromThread(handleBuyFurniture, player, arguments)
 
     @Command("ping")
     def handlePingCommand(self, player, arguments):
